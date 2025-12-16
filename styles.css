@@ -1,0 +1,38 @@
+:root {
+  --bg: #070707;
+  --fg: #e9e9e9;
+  --muted: #9a9a9a;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% 40%, #111 0%, var(--bg) 55%, #000 100%);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  letter-spacing: 0.02em;
+}
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 64px 20px 40px; }
+.hero { text-align: center; margin: 70px 0 50px; }
+h1 { font-size: clamp(38px, 6vw, 64px); margin: 0; letter-spacing: 0.18em; }
+.sub { margin: 14px 0 0; color: var(--muted); }
+
+.signals { display: grid; gap: 28px; }
+.card {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.35);
+}
+
+.card img { width: 100%; display: block; }
+.card .meta { padding: 14px 16px 18px; }
+.card .text { margin: 0; color: var(--muted); line-height: 1.6; }
+
+.loading { color: var(--muted); text-align: center; }
+
+.foot { margin-top: 70px; text-align: center; color: #666; }
+.foot a { color: #666; text-decoration: none; }
