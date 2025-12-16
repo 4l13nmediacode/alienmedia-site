@@ -1,46 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>4L13N MEDIA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at top, #111 0%, #000 60%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #eaeaea;
-      font-family: Arial, Helvetica, sans-serif;
-      letter-spacing: 0.15em;
-    }
-    .container {
-      text-align: center;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-    .line {
-      width: 120px;
-      height: 1px;
-      background: #666;
-      margin: 20px auto;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>4L13N MEDIA</h1>
-    <div class="line"></div>
-    <p>Photography · Stories · Signals</p>
-    <p>Site under construction</p>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>4L13N MEDIA — Signals</title>
+    <meta name="description" content="Photography · Stories · Signals" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <h1>4L13N MEDIA</h1>
+        <p class="sub">Photography · Stories · Signals</p>
+      </header>
+
+      <section id="signals" class="signals">
+        <p class="loading">Loading signals…</p>
+      </section>
+
+      <footer class="foot">
+        <a href="#" id="easter"> </a>
+      </footer>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
 </html>
