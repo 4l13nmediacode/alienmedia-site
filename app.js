@@ -1,5 +1,5 @@
 // ---------- CONFIG ----------
-const SANITY_PROJECT_ID = efhfyorc;
+const SANITY_PROJECT_ID = "efhfyorc";
 const SANITY_DATASET = "production";
 const SANITY_API_VERSION = "2023-10-01";
 
@@ -226,3 +226,4 @@ async function init() {
 }
 
 init();
+
