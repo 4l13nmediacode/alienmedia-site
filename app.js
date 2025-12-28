@@ -167,6 +167,13 @@ function renderFrames(container, data) {
       decoding: "async",
     });
 
+    img.addEventListener("load", () => {
+  // Smart rule: landscapes fill (cover), portraits preserve (contain)
+  const isLandscape = img.naturalWidth >= img.naturalHeight;
+  img.classList.toggle("fit-cover", isLandscape);
+  img.classList.toggle("fit-contain", !isLandscape);
+});
+
     const inner = el("div", { class: "frame-inner" }, [img]);
 
     if (s.signalText && s.signalText.trim().length) {
@@ -239,5 +246,6 @@ async function init() {
 }
 
 init();
+
 
 
