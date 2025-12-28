@@ -16,11 +16,24 @@ const prefersReducedMotion =
 
 // ---------- SANITY QUERY ----------
 const query = `
-  *[_type == "signal"] | order(publishedAt desc)[0..${LIMIT - 1}] {
+  *[_type == "signal"]
+  | order(
+      select(
+        section == "arrival" => 1,
+        section == "tension" => 2,
+        section == "rupture" => 3,
+        section == "after" => 4,
+        section == "hidden" => 5,
+        999
+      ) asc,
+      order asc
+    )[0..${LIMIT - 1}] {
     _id,
     signalText,
     mood,
     weight,
+    section,
+    order,
     "imageUrl": image.asset->url
   }
 `;
@@ -226,4 +239,5 @@ async function init() {
 }
 
 init();
+
 
