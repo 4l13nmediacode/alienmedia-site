@@ -126,3 +126,13 @@ body {
   padding-top: 120px;
 }
 
+/* Applied to landscapes to avoid black bars */
+.signal-img.fit-cover {
+  object-fit: cover;
+}
+
+/* Optional: if you ever want to force contain explicitly */
+.signal-img.fit-contain {
+  object-fit: contain;
+}
+
