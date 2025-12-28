@@ -85,11 +85,17 @@ body {
 .signal-img {
   width: 100%;
   max-height: 76vh;
-  object-fit: contain;
   display: block;
+
+  /* keep the rounded corners on the photo itself */
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(0,0,0,0.35);
+
+  /* remove the “box” feel */
+  border: none;
+  background: transparent;
+
+  /* default: preserve full image */
+  object-fit: contain;
 }
 
 .signal-text {
@@ -119,3 +125,4 @@ body {
   text-align: center;
   padding-top: 120px;
 }
+
