@@ -76,10 +76,10 @@ body {
   transform: translateY(0);
 }
 
+/* This is the "stage" that MUST clip the image */
 .frame-inner {
-  width: min(var(--maxW), 100%);
-  display: grid;
-  gap: 14px;
+  border-radius: 18px;
+  overflow: hidden;          /* <— this is the key for desktop */
 }
 
 .signal-img {
@@ -96,6 +96,7 @@ body {
 
   /* default: preserve full image */
   object-fit: cover;
+  object-position: center;
 }
 
 /* fallback for extreme portraits to reduce brutal cropping */
@@ -141,6 +142,7 @@ body {
 .signal-img.fit-contain {
   object-fit: contain;
 }
+
 
 
 
