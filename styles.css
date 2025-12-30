@@ -4,6 +4,11 @@
   --muted: #9a9a9a;
   --framePad: 28px;
   --maxW: 1100px;
+
+  /* NEW: gallery mat */
+  --mat: rgba(255, 255, 255, 0.045);   /* subtle */
+  --matBorder: rgba(255, 255, 255, 0.08);
+  --matShadow: 0 20px 80px rgba(0,0,0,0.55);
 }
 
 * { box-sizing: border-box; }
@@ -76,31 +81,53 @@ body {
   transform: translateY(0);
 }
 
-/* This is the "stage" that MUST clip the image */
+/* Stage that clips EVERYTHING inside (mat + image) */
 .frame-inner {
   border-radius: 18px;
-  overflow: hidden;          /* key for desktop rounding */
+  overflow: hidden;
+
+  /* NEW: subtle “gallery mat” */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06) 0%,
+    var(--mat) 20%,
+    rgba(255,255,255,0.03) 100%
+  );
+  border: 1px solid var(--matBorder);
+  box-shadow: var(--matShadow);
+
+  /* NEW: give the image breathing room */
+  padding: 14px;
+
+  /* NEW: ensures the mat wraps tightly around the image size */
+  display: inline-block;
 }
 
-/* ✅ Zero-cropping always */
+/* ✅ Zero cropping always */
 .signal-img {
   display: block;
 
-  /* Preserve full image, no cropping */
   width: auto;
   height: auto;
+
+  /* Preserve full image */
   object-fit: contain;
 
-  /* Keep it within viewport */
+  /* Keep it inside viewport */
   max-width: min(92vw, 1100px);
   max-height: 76vh;
 
-  /* Rounded edges (extra safe, even though frame-inner clips) */
-  border-radius: 18px;
+  /* Rounded corners on the photo itself */
+  border-radius: 14px;
 }
 
-/* Keep this class for compatibility if your JS ever applies it */
+/* keep for compatibility if your JS applies it */
 .signal-img.fit-contain {
+  object-fit: contain;
+}
+
+/* 🚫 Cropping not allowed — keep alias but force contain */
+.signal-img.fit-cover {
   object-fit: contain;
 }
 
@@ -132,14 +159,8 @@ body {
   padding-top: 120px;
 }
 
-/* 🚫 Cropping is not allowed (kept as a harmless alias to prevent accidental crop) */
-.signal-img.fit-cover {
-  object-fit: contain;
+/* Small screens: slightly less padding so portraits don’t feel “boxed in” */
+@media (max-width: 640px) {
+  .frame-inner { padding: 10px; }
+  .signal-img { border-radius: 12px; }
 }
-
-
-
-
-
-
-
