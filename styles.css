@@ -1,9 +1,9 @@
 :root {
-  --bg: #070707;
-  --fg: #e9e9e9;
-  --muted: #9a9a9a;
-  --framePad: 28px;
-  --maxW: 1100px;
+  --mat: rgba(255, 255, 255, 0.03);
+  --matBorder: rgba(255, 255, 255, 0.05);
+  --matShadow: 0 16px 60px rgba(0,0,0,0.45);
+}
+
 
   /* NEW: gallery mat */
   --mat: rgba(255, 255, 255, 0.045);   /* subtle */
@@ -164,3 +164,4 @@ body {
   .frame-inner { padding: 10px; }
   .signal-img { border-radius: 12px; }
 }
+
