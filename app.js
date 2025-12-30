@@ -167,12 +167,15 @@ function renderFrames(container, data) {
       decoding: "async",
     });
 
-    img.addEventListener("load", () => {
-  // Smart rule: landscapes fill (cover), portraits preserve (contain)
-  const isLandscape = img.naturalWidth >= img.naturalHeight;
-  img.classList.toggle("fit-cover", isLandscape);
-  img.classList.toggle("fit-contain", !isLandscape);
+img.addEventListener("load", () => {
+  // Default is cover (no bars).
+  // Only switch to contain if it's an extreme portrait.
+  const ratio = img.naturalWidth / img.naturalHeight; // < 1 = portrait
+  const isExtremePortrait = ratio < 0.65; // tune: lower = more tolerant of cropping
+
+  img.classList.toggle("fit-contain", isExtremePortrait);
 });
+
 
     const inner = el("div", { class: "frame-inner" }, [img]);
 
@@ -246,6 +249,7 @@ async function init() {
 }
 
 init();
+
 
 
 
