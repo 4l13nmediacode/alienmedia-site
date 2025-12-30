@@ -95,7 +95,7 @@ body {
   background: transparent;
 
   /* default: preserve full image */
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .signal-text {
@@ -135,4 +135,5 @@ body {
 .signal-img.fit-contain {
   object-fit: contain;
 }
+
 
