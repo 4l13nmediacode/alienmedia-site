@@ -1,14 +1,28 @@
 :root {
-  --mat: rgba(255, 255, 255, 0.03);
-  --matBorder: rgba(255, 255, 255, 0.05);
-  --matShadow: 0 16px 60px rgba(0,0,0,0.45);
-}
+  /* Base theme vars (kept as-is) */
+  --bg: #070707;
+  --fg: #e9e9e9;
+  --muted: #9a9a9a;
+  --framePad: 28px;
+  --maxW: 1100px;
 
-
-  /* NEW: gallery mat */
+  /* “Gallery mat” */
   --mat: rgba(255, 255, 255, 0.045);   /* subtle */
   --matBorder: rgba(255, 255, 255, 0.08);
   --matShadow: 0 20px 80px rgba(0,0,0,0.55);
+
+  /* NEW: subtle reactive glass tuning */
+  --glassBlur: 14px;
+  --glassBlurActive: 10px;
+  --glassBlurHover: 12px;
+
+  --matLiftActive: rgba(255,255,255,0.055);
+  --matLiftHover: rgba(255,255,255,0.05);
+  --matBorderActive: rgba(255,255,255,0.12);
+  --matBorderHover: rgba(255,255,255,0.10);
+
+  --matShadowActive: 0 28px 95px rgba(0,0,0,0.62);
+  --matShadowHover: 0 24px 88px rgba(0,0,0,0.58);
 }
 
 * { box-sizing: border-box; }
@@ -86,7 +100,7 @@ body {
   border-radius: 18px;
   overflow: hidden;
 
-  /* NEW: subtle “gallery mat” */
+  /* subtle “gallery mat” */
   background: linear-gradient(
     180deg,
     rgba(255,255,255,0.06) 0%,
@@ -96,11 +110,58 @@ body {
   border: 1px solid var(--matBorder);
   box-shadow: var(--matShadow);
 
-  /* NEW: give the image breathing room */
+  /* glassmorphic feel (very subtle) */
+  backdrop-filter: blur(var(--glassBlur));
+  -webkit-backdrop-filter: blur(var(--glassBlur));
+
+  /* give the image breathing room */
   padding: 14px;
 
-  /* NEW: ensures the mat wraps tightly around the image size */
+  /* ensures the mat wraps tightly around the image size */
   display: inline-block;
+
+  /* NEW: subtle reactive transitions */
+  transition:
+    backdrop-filter 420ms ease,
+    -webkit-backdrop-filter 420ms ease,
+    box-shadow 420ms ease,
+    border-color 420ms ease,
+    background-color 420ms ease,
+    background 420ms ease;
+}
+
+/* Hover (desktop): slightly “wakes up” */
+@media (hover: hover) and (pointer: fine) {
+  .frame-inner:hover {
+    backdrop-filter: blur(var(--glassBlurHover));
+    -webkit-backdrop-filter: blur(var(--glassBlurHover));
+
+    border-color: var(--matBorderHover);
+    box-shadow: var(--matShadowHover);
+
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.07) 0%,
+      var(--matLiftHover) 20%,
+      rgba(255,255,255,0.03) 100%
+    );
+  }
+}
+
+/* Active frame: a touch clearer + slightly more defined */
+.frame.is-active .frame-inner {
+  backdrop-filter: blur(var(--glassBlurActive));
+  -webkit-backdrop-filter: blur(var(--glassBlurActive));
+
+  border-color: var(--matBorderActive);
+  box-shadow: var(--matShadowActive);
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08) 0%,
+    var(--matLiftActive) 20%,
+    rgba(255,255,255,0.03) 100%
+  );
 }
 
 /* ✅ Zero cropping always */
@@ -164,4 +225,3 @@ body {
   .frame-inner { padding: 10px; }
   .signal-img { border-radius: 12px; }
 }
-
