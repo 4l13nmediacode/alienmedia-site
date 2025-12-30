@@ -79,25 +79,30 @@ body {
 /* This is the "stage" that MUST clip the image */
 .frame-inner {
   border-radius: 18px;
-  overflow: hidden;          /* <— this is the key for desktop */
+  overflow: hidden;          /* key for desktop rounding */
 }
 
-.signal-img{
+/* ✅ Zero-cropping always */
+.signal-img {
+  display: block;
+
+  /* Preserve full image, no cropping */
   width: auto;
   height: auto;
+  object-fit: contain;
+
+  /* Keep it within viewport */
   max-width: min(92vw, 1100px);
   max-height: 76vh;
-  display: block;
+
+  /* Rounded edges (extra safe, even though frame-inner clips) */
   border-radius: 18px;
-  object-fit: contain; /* key change */
 }
 
-
-/* fallback for extreme portraits to reduce brutal cropping */
+/* Keep this class for compatibility if your JS ever applies it */
 .signal-img.fit-contain {
   object-fit: contain;
 }
-
 
 .signal-text {
   margin: 0;
@@ -127,15 +132,12 @@ body {
   padding-top: 120px;
 }
 
-/* Applied to landscapes to avoid black bars */
+/* 🚫 Cropping is not allowed (kept as a harmless alias to prevent accidental crop) */
 .signal-img.fit-cover {
-  object-fit: cover;
-}
-
-/* Optional: if you ever want to force contain explicitly */
-.signal-img.fit-contain {
   object-fit: contain;
 }
+
+
 
 
 
