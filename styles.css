@@ -98,6 +98,12 @@ body {
   object-fit: cover;
 }
 
+/* fallback for extreme portraits to reduce brutal cropping */
+.signal-img.fit-contain {
+  object-fit: contain;
+}
+
+
 .signal-text {
   margin: 0;
   color: var(--muted);
@@ -135,5 +141,6 @@ body {
 .signal-img.fit-contain {
   object-fit: contain;
 }
+
 
 
