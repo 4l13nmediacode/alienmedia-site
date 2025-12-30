@@ -82,22 +82,16 @@ body {
   overflow: hidden;          /* <— this is the key for desktop */
 }
 
-.signal-img {
-  width: 100%;
+.signal-img{
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 1100px);
   max-height: 76vh;
   display: block;
-
-  /* keep the rounded corners on the photo itself */
   border-radius: 18px;
-
-  /* remove the “box” feel */
-  border: none;
-  background: transparent;
-
-  /* default: preserve full image */
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain; /* key change */
 }
+
 
 /* fallback for extreme portraits to reduce brutal cropping */
 .signal-img.fit-contain {
@@ -142,6 +136,7 @@ body {
 .signal-img.fit-contain {
   object-fit: contain;
 }
+
 
 
 
